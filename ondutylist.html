@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #inputname {
+        display: inline-block;
+        margin: 20px;
+        /* display: block; */
+        width: 200px;
+        height: 2rem;
+        font-size: large;
+        border-radius: 5px;
+      }
+      .btn {
+        margin: 0 0 0px 0px;
+      }
+      #namediv {
+        padding: 10px 20px 10px 10px;
+        background-color: green;
+        width: 70vw;
+        height: 30vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      #newname {
+        height: 2rem;
+        background-color: blueviolet;
+        /* display: block; */
+        margin: 3px 5px 3px 5px;
+        padding: 3px 3px 3px 3px;
+        border: black solid 2px;
+        cursor: pointer;
+      }
+      #dailyreport {
+        background-color: cadetblue;
+        
+      }
+      .onduty{
+        /* color: white; */
+        display: inline;
+        margin: 4px 5px 4px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="inputname" placeholder="add new imploye" value="arpit" />
+    <button class="btn" onclick="addnewname()">add</button>
+    <h4>click on name for intry</h4>
+    <div id="namediv" class="abcd">
+      <!-- <p id="newname" onclick="addname()">arpit</p> -->
+    </div>
+    <!-- <span>array for check = </span> -->
+    <!-- <div id="array"></div> -->
+    <h4>imploye details</h4>
+    <div id="dailyreport"></div>
+
+    <script>
+      const namearray = [];
+      function addnewname() {
+        let name = document.getElementById("inputname").value;
+
+        if(name == ""){
+          alert("firsty enter a new imploye name")
+        }else{
+        let names = namearray.includes(name);
+        // console.log(names)
+        if (true == names) {
+          alert("this name is already exist");
+        } else {
+    
+            let newtag = document.createElement("button");
+            newtag.id = "newname";
+            newtag.className = name;
+            newtag.innerHTML = name;
+            document.getElementById("namediv").appendChild(newtag);          
+            newtag.setAttribute("name",name);
+            newtag.setAttribute("onclick","addname()" );
+                 
+            namearray.push(name);
+          // document.getElementById("array").innerHTML = namearray;
+        }
+      }
+    }
+      function addname(){
+        
+        let person = document.createElement("div");
+        person.id = "person";
+        person.className = "person"
+        // nametag.innerHTML = naam.toUpperCase();
+        document.getElementById("dailyreport").appendChild(person);
+        let lastdiv = document.getElementById("dailyreport");
+        // lastdiv.(last-child);
+        let naam = document.activeElement.className;
+        let nametag = document.createElement("h6");
+        nametag.id = naam;
+        nametag.className = "onduty"
+        nametag.innerHTML = naam.toUpperCase();
+        // document.getElementById("person").appendChild(nametag);
+        let lastchild = lastdiv.lastChild;
+        console.log(lastchild);
+        document.querySelector('').appendChild(nametag);
+        
+        // let container = document.querySelector('')
+        let intime = document.createElement("span");
+        let today = new Date();
+        let date = today.getDate()+"-"+(today.getMonth()+1)+"-"+today.getFullYear();
+        let time = today.getHours()+":"+today.getMinutes() +":"+today.getSeconds();
+        // intime.id =;
+        intime.innerHTML = time +",  " +date;
+        // console.log(today);
+        // console.log(year);
+        // console.log(month + 1);
+        // console.log(date);
+        document.querySelector('#person').appendChild(intime);
+      }
+    </script>
+  </body>
+</html>
